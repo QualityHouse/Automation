@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePageObject {
 	private final String expectedTitle = "My.dir.bg";
-	private final String errorMessage = "Грешно потребителско име или парола!";
 	private final String logoutValue = "Изход";
 
 	private boolean isUserLogged = false;
