@@ -5,9 +5,6 @@ import java.nio.file.Paths;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 public class TestBaseSetup {
 	private static final String pathToTheResourcesDir = "\\src\\test\\resources\\";
@@ -20,20 +17,12 @@ public class TestBaseSetup {
 		return driver;
 	}
 
-	@Parameters({ "browserType", "appURL" })
-	@BeforeMethod
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
 			setDriver(browserType, appURL);
-
 		} catch (final Exception e) {
 			System.out.println("Error....." + e.getStackTrace());
 		}
-	}
-
-	@AfterMethod
-	public void tearDown() {
-		driver.quit();
 	}
 
 	private void setDriver(String browserType, String appURL) {

@@ -1,8 +1,8 @@
 package com.sample.tests;
 
-import static org.testng.AssertJUnit.assertTrue;
 import org.openqa.selenium.WebDriver;
-
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -17,7 +17,9 @@ public class LoginPageTest extends TestBaseSetup {
 	private LoginPage loginPage;
 
 	@BeforeMethod
-	public void setUp() {
+	@Parameters({ "browserType", "appURL" })
+	public void setUp(String browserType, String appURL) {
+		initializeTestBaseSetup(browserType, appURL);
 		driver = getDriver();
 	}
 
@@ -27,7 +29,8 @@ public class LoginPageTest extends TestBaseSetup {
 		homePage = new HomePage(driver);
 		loginPage = homePage.clickLoginBtn();
 
-		assertTrue(loginPage.verifySuccessfulLogin(username, password));
+		AssertJUnit.assertTrue(loginPage.verifySuccessfulLogin(username,
+				password));
 	}
 
 	@Parameters({ "wrongUsername", "wrongPassword" })
@@ -37,7 +40,12 @@ public class LoginPageTest extends TestBaseSetup {
 		homePage = new HomePage(driver);
 		loginPage = homePage.clickLoginBtn();
 
-		assertTrue(loginPage.verifyUnsuccessfulLogin(wrongUsername,
+		AssertJUnit.assertTrue(loginPage.verifyUnsuccessfulLogin(wrongUsername,
 				wrongPassword));
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
 	}
 }
