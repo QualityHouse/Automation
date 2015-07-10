@@ -31,6 +31,7 @@ public abstract class BasePageObject {
 		} catch (final TimeoutException exception) {
 			return false;
 		}
+		
 		return true;
 	}
 

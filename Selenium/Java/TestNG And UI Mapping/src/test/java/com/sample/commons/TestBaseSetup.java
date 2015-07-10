@@ -34,14 +34,14 @@ public class TestBaseSetup {
 			driver = initFirefoxDriver(appURL);
 			break;
 		default:
-			System.out.println("browser : " + browserType
+			System.out.println("Browser : " + browserType
 					+ " is invalid, Launching Firefox as browser of choice..");
 			driver = initFirefoxDriver(appURL);
 		}
 	}
 
 	private static WebDriver initChromeDriver(String appURL) {
-		System.out.println("Launching Google Chrome with new profile..");
+		System.out.println("Launching Google Chrome browser..");
 
 		System.setProperty("webdriver.chrome.driver", currentWorkingDirPath
 				+ pathToTheResourcesDir + "chromedriver.exe");
@@ -54,6 +54,7 @@ public class TestBaseSetup {
 
 	private static WebDriver initFirefoxDriver(String appURL) {
 		System.out.println("Launching Firefox browser..");
+		
 		final WebDriver driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);

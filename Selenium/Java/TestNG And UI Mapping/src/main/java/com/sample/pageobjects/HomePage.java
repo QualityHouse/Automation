@@ -22,8 +22,7 @@ public class HomePage extends BasePageObject {
 
 	public LoginPage clickLoginBtn() {
 		waitForElementToBeDisplayed(loginBtn);
-		final WebElement loginBtnBtnElement = getDriver().findElement(loginBtn);
-
+		WebElement loginBtnBtnElement = getDriver().findElement(loginBtn);
 		loginBtnBtnElement.click();
 
 		return new LoginPage(getDriver());

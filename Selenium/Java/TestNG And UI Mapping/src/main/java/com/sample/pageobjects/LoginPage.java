@@ -34,6 +34,7 @@ public class LoginPage extends BasePageObject {
 		enterUserName(wrongUsername);
 		enterPassword(wrongPassword);
 		clickOnLogin();
+		
 		return getErrorMessage().contains(errorMessage);
 	}
 
@@ -41,9 +42,8 @@ public class LoginPage extends BasePageObject {
 		enterUserName(username);
 		enterPassword(password);
 		clickOnLogin();
-
-		waitForElementToBeDisplayed(loggedUserArea);
-		final WebElement element = getDriver().findElement(loggedUserArea);
+		
+		WebElement element = getDriver().findElement(loggedUserArea);
 
 		if (element.isDisplayed() && element.isEnabled()) {
 			return true;
@@ -53,31 +53,24 @@ public class LoginPage extends BasePageObject {
 	}
 
 	private void enterUserName(String username) {
-		waitForElementToBeDisplayed(emailTextBox);
-		final WebElement emailTxtBox = getDriver().findElement(emailTextBox);
-
+		WebElement emailTxtBox = getDriver().findElement(emailTextBox);
 		emailTxtBox.sendKeys(username);
 	}
 
 	private void enterPassword(String password) {
-		waitForElementToBeDisplayed(passwordTextBox);
-		final WebElement passwordTxtBox = getDriver().findElement(passwordTextBox);
-
+		WebElement passwordTxtBox = getDriver().findElement(passwordTextBox);
 		passwordTxtBox.sendKeys(password);
 	}
 
 	private void clickOnLogin() {
 		waitForElementToBeDisplayed(loginBtn);
-		final WebElement loginButton = getDriver().findElement(loginBtn);
-
+		WebElement loginButton = getDriver().findElement(loginBtn);
 		loginButton.click();
 
 	}
 
 	private String getErrorMessage() {
-		waitForElementToBeDisplayed(errorMsgTxt);
-		final WebElement errorMsg = getDriver().findElement(errorMsgTxt);
-
+		WebElement errorMsg = getDriver().findElement(errorMsgTxt);
 		return errorMsg.getText();
 	}
 }
