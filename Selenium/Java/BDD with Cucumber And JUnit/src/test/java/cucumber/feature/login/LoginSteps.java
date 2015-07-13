@@ -30,6 +30,11 @@ public class LoginSteps extends TestBaseSetup {
 		initializeTestBaseSetup(chromeBrowser, appUrl);
 		driver = getDriver();
 	}
+	
+	@After
+	public void tearDown()  {
+		driver.quit();
+	}
 
 	@Given("^the login page is opened$")
 	public void openLoginPage() throws Throwable {
@@ -82,10 +87,5 @@ public class LoginSteps extends TestBaseSetup {
 	@And("^I should be able to logout$")
 	public void logout() throws Throwable {
 		loginPage.logout();
-	}
-
-	@After
-	public void tearDown()  {
-		driver.quit();
 	}
 }
