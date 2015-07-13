@@ -31,7 +31,7 @@ public class LoginPage extends BasePageObject {
 	private WebElement loginFormLocator;
 
 	@FindBy(id = "usernick")
-	private WebElement successMessageLocator;
+	private WebElement loggedUserArea;
 
 	@FindBy(css = ".fpBlockBody2 b")
 	private WebElement failureMessageLocator;
@@ -48,25 +48,21 @@ public class LoginPage extends BasePageObject {
 	}
 
 	public void enterUsername(String username) {
-		waitForElementToBeDisplayed(inputUserName);
 		inputUserName.sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
-		waitForElementToBeDisplayed(inputPassword);
 		inputPassword.sendKeys(password);
 	}
 
 	public void clickLoginButton() {
-		waitForElementToBeDisplayed(loginButton);
 		loginButton.click();
 	}
 
 	public boolean successMessagePresent() {
-		waitForElementToBeDisplayed(successMessageLocator);
 		isUserLogged = true;
 		
-		return successMessageLocator.isDisplayed();
+		return loggedUserArea.isDisplayed();
 	}
 	
 	public boolean isUserLogged() {
@@ -74,16 +70,13 @@ public class LoginPage extends BasePageObject {
 	}
 
 	public boolean failureMessagePresent() {
-		waitForElementToBeDisplayed(failureMessageLocator);
 		isUserLogged = false;
 		
 		return failureMessageLocator.isDisplayed();
 	}
 
 	public void logout() {
-		waitForElementToBeDisplayed(successMessageLocator);
-		successMessageLocator.click();
-
+		loggedUserArea.click();
 		selectValueFromUnorderedList(logoutArea, logoutValue);
 	}
 

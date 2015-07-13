@@ -18,6 +18,10 @@ import com.sample.pageobjects.LoginPage;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginPageTest extends TestBaseSetup {
+	private final String chromeBrowser = "chrome";
+	private final String firefoxBrowser = "firefox";
+	private final String appUrl = "http://dir.bg";
+	
 	private WebDriver driver;
 	private LoginPage login;
 	private HomePage home;
@@ -26,6 +30,11 @@ public class LoginPageTest extends TestBaseSetup {
 	public void setUp() {
 		initializeTestBaseSetup(chromeBrowser, appUrl);
 		driver = getDriver();
+	}
+	
+	@After
+	public void tearDown() {
+		driver.quit();
 	}
 
 	@Test
@@ -50,10 +59,5 @@ public class LoginPageTest extends TestBaseSetup {
 		login.clickLoginButton();
 		
 		assertTrue(login.failureMessagePresent());
-	}
-	
-	@After
-	public void tearDown() {
-		driver.quit();
 	}
 }

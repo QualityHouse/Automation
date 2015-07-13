@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePageObject {
 	private WebDriver driver;
 
-	public BasePageObject(WebDriver driver) {
+	protected BasePageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -22,8 +22,13 @@ public abstract class BasePageObject {
 		return this.driver.getTitle();
 	}
 	
-	protected void waitForElementToBeDisplayed(WebElement element) {
+	protected void waitForElementToBeVisible(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	protected void waitForElementToBeClickable(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 }

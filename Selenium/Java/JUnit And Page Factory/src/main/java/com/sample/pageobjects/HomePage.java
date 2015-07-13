@@ -10,7 +10,7 @@ public class HomePage extends BasePageObject {
 	private final String expectedPageTitle = "Българският Интернет портал!";
 	
 	@CacheLookup
-	@FindBy(css = "#lenta-login a")
+	@FindBy(css = "#lenta-login > a")
 	private WebElement loginButton;
 
 	public HomePage(WebDriver driver) {
@@ -22,7 +22,7 @@ public class HomePage extends BasePageObject {
 	}
 
 	public LoginPage clickLoginButton() {
-		waitForElementToBeDisplayed(loginButton);
+		waitForElementToBeClickable(loginButton);
 		loginButton.click();
 
 		return PageFactory.initElements(getDriver(), LoginPage.class);

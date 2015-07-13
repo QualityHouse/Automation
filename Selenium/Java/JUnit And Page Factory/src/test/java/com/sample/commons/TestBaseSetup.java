@@ -13,10 +13,6 @@ public class TestBaseSetup {
 	
 	private WebDriver driver;
 	
-	protected final String chromeBrowser = "chrome";
-	protected final String firefoxBrowser = "firefox";
-	protected final String appUrl = "http://dir.bg";
-
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
 			setDriver(browserType, appURL);
@@ -52,6 +48,7 @@ public class TestBaseSetup {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);
+		
 		return driver;
 	}
 
@@ -60,6 +57,7 @@ public class TestBaseSetup {
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);
+		
 		return driver;
 	}
 }
