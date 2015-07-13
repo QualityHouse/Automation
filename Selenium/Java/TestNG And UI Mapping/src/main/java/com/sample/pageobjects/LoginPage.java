@@ -29,20 +29,11 @@ public class LoginPage extends BasePageObject {
 		return getPageTitle().contains(expectedTitle);
 	}
 
-	public boolean verifyUnsuccessfulLogin(String wrongUsername,
-			String wrongPassword) {
-		enterUserName(wrongUsername);
-		enterPassword(wrongPassword);
-		clickOnLogin();
-		
-		return getErrorMessage().contains(errorMessage);
-	}
-
 	public boolean verifySuccessfulLogin(String username, String password) {
 		enterUserName(username);
 		enterPassword(password);
 		clickOnLogin();
-		
+
 		WebElement element = getDriver().findElement(loggedUserArea);
 
 		if (element.isDisplayed() && element.isEnabled()) {
@@ -50,6 +41,15 @@ public class LoginPage extends BasePageObject {
 		}
 
 		return false;
+	}
+
+	public boolean verifyUnsuccessfulLogin(String wrongUsername,
+			String wrongPassword) {
+		enterUserName(wrongUsername);
+		enterPassword(wrongPassword);
+		clickOnLogin();
+
+		return getErrorMessage().contains(errorMessage);
 	}
 
 	private void enterUserName(String username) {
@@ -63,7 +63,6 @@ public class LoginPage extends BasePageObject {
 	}
 
 	private void clickOnLogin() {
-		waitForElementToBeDisplayed(loginBtn);
 		WebElement loginButton = getDriver().findElement(loginBtn);
 		loginButton.click();
 
@@ -71,6 +70,7 @@ public class LoginPage extends BasePageObject {
 
 	private String getErrorMessage() {
 		WebElement errorMsg = getDriver().findElement(errorMsgTxt);
+
 		return errorMsg.getText();
 	}
 }

@@ -9,7 +9,7 @@ import com.sample.commons.PropertiesCache;
 public class HomePage extends BasePageObject {
 	private final String expectedPageTitle = "Българският Интернет портал!";
 
-	private final By loginBtn = By.cssSelector(PropertiesCache.getInstance()
+	private By loginBtn = By.cssSelector(PropertiesCache.getInstance()
 			.getProperty("homePageLoginBtnCss"));
 
 	public HomePage(WebDriver driver) {
@@ -21,9 +21,8 @@ public class HomePage extends BasePageObject {
 	}
 
 	public LoginPage clickLoginBtn() {
-		waitForElementToBeDisplayed(loginBtn);
-		WebElement loginBtnBtnElement = getDriver().findElement(loginBtn);
-		loginBtnBtnElement.click();
+		WebElement loginButton = fluentWait(loginBtn);
+		loginButton.click();
 
 		return new LoginPage(getDriver());
 	}
