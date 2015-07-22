@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends BasePageObject {
 	private final String expectedPageTitle = "Българският Интернет портал!";
 	
-	@FindBy(css = "#lenta-login a")
+	@FindBy(css = "#lenta-login > a")
 	private WebElement loginButton;
 
 	public HomePage(WebDriver driver) {

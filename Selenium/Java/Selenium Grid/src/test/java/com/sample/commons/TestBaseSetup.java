@@ -14,7 +14,7 @@ public class TestBaseSetup {
 	protected final String chromeBrowser = "chrome";
 	protected final String firefoxBrowser = "firefox";
 	protected final String appUrl = "http://dir.bg";
-	protected final String remoteUrl = "http://192.168.10.156:4444/wd/hub";
+	protected final String remoteUrl = "http://192.168.10.164:4444/wd/hub";
 
 	protected void initializeRemoteWebDriver(String browserType, String appURL,
 			String remoteAddress) {

@@ -24,6 +24,6 @@ public abstract class BasePageObject {
 	
 	protected void waitForElementToBeDisplayed(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 }

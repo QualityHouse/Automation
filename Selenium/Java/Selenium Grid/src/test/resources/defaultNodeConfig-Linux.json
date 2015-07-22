@@ -3,7 +3,7 @@
       [
         {
           "browserName": "firefox",
-          "platform": "LINUX",
+          "platform": "WINDOWS",
           "maxInstances": 3
         }
       ],
@@ -13,7 +13,7 @@
         "port":5555,
 
         "hubPort":4444,
-        "hubHost":192.168.10.156,
+        "hubHost":192.168.10.164,
 
         "nodePolling":2000,
 

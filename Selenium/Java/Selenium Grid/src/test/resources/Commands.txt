@@ -12,4 +12,4 @@ Start Selenium Node with JSON configuration file:
 java -jar selenium-server-standalone-2.46.0.jar -role node -hub http://localhost:4444/grid/register/ -nodeConfig defaultNodeConfig-Linux.json
 
 * Windows/Chrome configuration. Change the hubHost to match the Hub IP address. If the default port is busy, change it as well. Provide path to the chromedriver
-java -jar selenium-server-standalone-2.46.0.jar -role node -hub http://192.168.10.156:4444/grid/register/ -nodeConfig defaultNodeConfig-Windows.json -Dwebdriver.chrome.driver=C:\path\to\chromedriver.exe
+java -jar selenium-server-standalone-2.46.0.jar -role node -hub http://192.168.10.164:4444/grid/register/ -nodeConfig defaultNodeConfig-Windows.json -Dwebdriver.chrome.driver=C:\path\to\chromedriver.exe
